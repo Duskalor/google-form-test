@@ -9,7 +9,7 @@ export const App = () => {
       <Toaster richColors />
       <main className='grid grid-rows-[auto,1fr,auto] min-h-screen m-auto container'>
         <Header />
-        <section className='flex gap-10  m-auto p-5'>
+        <section className='flex gap-10  mx-auto  p-5'>
           <Sidebar />
           <ListaTest />
         </section>

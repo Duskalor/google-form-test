@@ -15,14 +15,20 @@ export const FormTest = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: setDataFetch,
-    // staleTime: 1000 * 60, // Considera la data fresca por 5 minutos
     onSuccess: () => {
-      queryClient.invalidateQueries(['ideas']);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('¡Han pasado 3 segundos! Revalidando');
+        }, 3000); // 3000 milisegundos = 3 segundos
+      })
+        .then((value) => {
+          console.log(value);
+          return queryClient.invalidateQueries(['ideas']);
+        })
+        .then(() => {
+          toast.success('subido correctamente');
+        });
     },
-    onSettled: () =>
-      queryClient.invalidateQueries(['ideas']).then(() => {
-        toast.success('creado correctamente');
-      }),
   });
 
   const handleSubmit = async (e) => {
@@ -56,6 +62,7 @@ export const FormTest = () => {
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             placeholder='escribe una idea'
             required
+            autoComplete='off'
           />
         </div>
         <div className='mb-5'>
@@ -72,6 +79,7 @@ export const FormTest = () => {
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             placeholder='escribe una descripción'
             required
+            autoComplete='off'
           />
         </div>
 
