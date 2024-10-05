@@ -3,11 +3,11 @@ import { List } from './list';
 import { Spinner } from './spinner';
 
 export const ListaTest = () => {
-  const { data: listaIdeas, loading } = useFetcher();
+  const { data, loading } = useFetcher();
   return (
-    <div className='pl-52'>
+    <div className=' flex-1'>
       {loading && <Spinner />}
-      {!loading && <List ideas={listaIdeas} />}
+      {!loading && data && <List ideas={data} />}
     </div>
   );
 };

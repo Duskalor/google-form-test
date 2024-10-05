@@ -2,6 +2,7 @@ import React from 'react';
 import { toast } from 'sonner';
 import { utilText } from '../utils/util-text';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Button } from '@/components/ui/button';
 
 const setDataFetch = async ({ idea, description }) => {
   const URL = `https://docs.google.com/forms/d/e/1FAIpQLSedSrxE67tZaQEPWaB5lkEjc4fVdmz9LnKinYnsRWkiYpoqQQ/formResponse?usp=pp_url&entry.2144804360=${idea}&entry.1731463631=${description}`;
@@ -83,12 +84,7 @@ export const FormTest = () => {
           />
         </div>
 
-        <button
-          type='submit'
-          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-        >
-          Guardar
-        </button>
+        <Button>Guardar</Button>
       </form>
     </div>
   );

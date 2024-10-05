@@ -16,7 +16,7 @@ export const List = ({ ideas }) => {
           </tr>
         </thead>
         <tbody>
-          {[...ideas]?.reverse().map(({ idea, fecha, description }, i) => (
+          {[...ideas].reverse().map(({ idea, fecha, description }, i) => (
             <tr
               key={i}
               className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
